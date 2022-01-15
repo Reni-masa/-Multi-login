@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  # phpコンテナ
+  php:
+    container_name: php
+    build: ./docker/php
+    volumes:
+      - ./:/var/www/
+    working_dir: /var/www/
+    depends_on:
+      - db
+
+  # webサーバーコンテナ(nginx)
+  nginx:
+    container_name: nginx
+    build: ./docker/nginx
+    ports:
+      - '8000:80'
+    depends_on:
+      - php
+    volumes:
+      - ./:/var/www/
+
+  # dbコンテナ(postgresql)
+  db:
+    image: postgres:14
+    container_name: db
+    volumes:
+      - db_volumes:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    environment:
+      TZ: 'Asia/Tokyo'
+      POSTGRES_USER: 'admin'
+      POSTGRES_PASSWORD: 'password!1'
+      POSTGRES_DB: 'multi_login'
+
+volumes:
+  db_volumes:
+    driver: local
