@@ -1,2 +1,2 @@
-# -Multi-login
+# Multi-login
 Laravelでマルチログイン
