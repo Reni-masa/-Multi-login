@@ -18,7 +18,16 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+            {{-- マルチログインに対応 --}}
+            {{-- @if(auth('users')->user()) --}}
+            @auth('users')
+                @include('layouts.user-navigation')
+            @endif
+
+            {{-- @if(auth('owners')->user()) --}}
+            @auth('owners')
+                @include('layouts.owner-navigation')
+            @endif
 
             <!-- Page Heading -->
             <header class="bg-white shadow">
