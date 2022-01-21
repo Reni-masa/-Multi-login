@@ -6,15 +6,20 @@
                 オーナー側
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('owner.dashboard') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
-                    </a>
+                    <div style='width: 30px'>
+                        <a href="{{ route('owner.dashboard') }}">
+                            <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('owner.dashboard')" :active="request()->routeIs('owner.dashboard')">
                         {{ __('Dashboard') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('owner.index')" :active="request()->routeIs('owner.index')">
+                        ユーザー情報
                     </x-nav-link>
                 </div>
             </div>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Owner\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Owner\Auth\RegisteredUserController;
 use App\Http\Controllers\Owner\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Owner\OwnerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('owner.welcome');
 });
+
+Route::resource('/', OwnerController::class)
+    ->middleware('auth:owners');
 
 Route::get('/dashboard', function () {
     return view('owner.dashboard');
