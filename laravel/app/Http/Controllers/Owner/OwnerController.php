@@ -23,7 +23,7 @@ class OwnerController extends Controller
      */
     public function index()
     {
-        dd('オーナ一覧テスト');
+        return view('owner.welcome');
     }
 
     /**
