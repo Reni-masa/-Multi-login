@@ -22,11 +22,7 @@ use App\Http\Controllers\Owner\OwnerController;
 |
 */
 
-Route::get('/', function () {
-    return view('owner.welcome');
-});
-
-Route::resource('/', OwnerController::class)
+Route::resource('owner', OwnerController::class)
     ->middleware('auth:owners');
 
 Route::get('/dashboard', function () {

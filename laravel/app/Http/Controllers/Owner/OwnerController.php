@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\owner\OwnerRequest;
 
 class OwnerController extends Controller
 {
@@ -23,7 +25,9 @@ class OwnerController extends Controller
      */
     public function index()
     {
-        return view('owner.welcome');
+        $user = Auth::user();
+
+        return view('owner.index',compact('user'));
     }
 
     /**
@@ -72,13 +76,15 @@ class OwnerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\owner\OwnerRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(OwnerRequest $request, $id)
     {
-        //
+        // dd($request);
+        // $validated = $request->validated();
+        // dd($validated);
     }
 
     /**
