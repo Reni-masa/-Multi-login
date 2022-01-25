@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\owner\OwnerRequest;
+use App\Models\Owner;
+use Illuminate\Support\Facades\Hash;
 
 class OwnerController extends Controller
 {
@@ -26,7 +28,6 @@ class OwnerController extends Controller
     public function index()
     {
         $user = Auth::user();
-
         return view('owner.index',compact('user'));
     }
 
@@ -82,9 +83,15 @@ class OwnerController extends Controller
      */
     public function update(OwnerRequest $request, $id)
     {
-        // dd($request);
-        // $validated = $request->validated();
-        // dd($validated);
+        $owner = Owner::find(Auth::id());
+        $owner->name = $request->name;
+        $owner->email = $request->email;
+        if (!empty($request['new_password'])) {
+            $owner->password = Hash::make($request->new_password);
+        };
+        $owner->save();
+
+        return redirect()->route('owner.owner.index')->with(['message' => '更新しました。']);;
     }
 
     /**

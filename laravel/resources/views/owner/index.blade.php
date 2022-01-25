@@ -9,9 +9,16 @@
             @csrf
 
             <ul>
+                {{-- バリデーションメッセージ --}}
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
+                {{-- 完了メッセージ --}}
+                @if (session('message'))
+                <div class="alert alert-danger">
+                    {{ session('message') }}
+                </div>
+                @endif
             </ul>
 
             <section class="text-gray-600 body-font relative">

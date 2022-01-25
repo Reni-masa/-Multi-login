@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class OwnerRequest extends FormRequest
-{   
+{
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
     public function authorize()
-    {   
+    {
         return true;
     }
 
@@ -31,9 +31,6 @@ class OwnerRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255',Rule::unique('owners')->ignore(Auth::id())],
-            'password' => [Password::defaults()],
-            'new_password' => [Password::defaults()],
-            'new_password_confirmation' => [Password::defaults()],
         ];
     }
 
@@ -58,13 +55,13 @@ class OwnerRequest extends FormRequest
     public function withValidator($validator)
     {
         // 新規passと確認passの一致確認
-        $validator->sometimes('new_password', 'confirmed', function ($request)
+        $validator->sometimes('new_password', 'confirmed|min:8', function ($request)
         {
             return !empty($request['new_password']);
         });
 
         $validator->after(function ($validator) {
-            
+
             if (!$this->newPasswordValidator()) {
                 $validator->errors()->add('current_password', '登録されているパスワードと一致しません。');
             };
@@ -72,9 +69,9 @@ class OwnerRequest extends FormRequest
     }
 
     public function newPasswordValidator()
-    {   
+    {
         $request = app(Request::class);
-    
+
         if (empty($request['new_password'])) {
             return true;
         };
