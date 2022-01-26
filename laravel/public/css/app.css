@@ -654,10 +654,6 @@ select {
   margin-left: auto;
   margin-right: auto;
 }
-.my-5 {
-  margin-top: 1.25rem;
-  margin-bottom: 1.25rem;
-}
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -703,9 +699,6 @@ select {
 .-mt-px {
   margin-top: -1px;
 }
-.mb-12 {
-  margin-bottom: 3rem;
-}
 .mt-6 {
   margin-top: 1.5rem;
 }
@@ -744,9 +737,6 @@ select {
 }
 .h-8 {
   height: 2rem;
-}
-.h-32 {
-  height: 8rem;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -818,9 +808,6 @@ select {
 .cursor-default {
   cursor: default;
 }
-.resize-none {
-  resize: none;
-}
 .list-inside {
   list-style-position: inside;
 }
@@ -832,9 +819,6 @@ select {
 }
 .flex-col {
   flex-direction: column;
-}
-.flex-wrap {
-  flex-wrap: wrap;
 }
 .items-center {
   align-items: center;
@@ -970,10 +954,6 @@ select {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
-.py-12 {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -985,6 +965,10 @@ select {
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 .px-5 {
   padding-left: 1.25rem;
@@ -1051,17 +1035,13 @@ select {
   font-size: 0.75rem;
   line-height: 1rem;
 }
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
 }
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 .font-medium {
   font-weight: 500;
@@ -1075,23 +1055,14 @@ select {
 .leading-5 {
   line-height: 1.25rem;
 }
-.leading-tight {
-  line-height: 1.25;
-}
 .leading-7 {
   line-height: 1.75rem;
 }
-.leading-relaxed {
-  line-height: 1.625;
+.leading-tight {
+  line-height: 1.25;
 }
 .leading-8 {
   line-height: 2rem;
-}
-.leading-6 {
-  line-height: 1.5rem;
-}
-.leading-normal {
-  line-height: 1.5;
 }
 .tracking-widest {
   letter-spacing: 0.1em;
@@ -1150,10 +1121,6 @@ select {
 .text-gray-900 {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
-}
-.text-indigo-500 {
-  --tw-text-opacity: 1;
-  color: rgb(99 102 241 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;
@@ -1491,11 +1458,6 @@ select {
   .sm\:text-right {
     text-align: right;
   }
-
-  .sm\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
 }
 @media (min-width: 768px) {
 
@@ -1516,10 +1478,6 @@ select {
   }
 }
 @media (min-width: 1024px) {
-
-  .lg\:w-2\/3 {
-    width: 66.666667%;
-  }
 
   .lg\:w-1\/2 {
     width: 50%;

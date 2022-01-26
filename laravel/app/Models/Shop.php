@@ -15,6 +15,7 @@ class Shop extends Model
         'information',
         'filename',
         'is_selling',
+        'owner_id',
     ];
 
     // リレーション

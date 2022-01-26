@@ -9,7 +9,11 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rules;
+use Throwable;
+use App\Models\Shop;
+use Illuminate\Support\Facades\DB;
 
 class RegisteredUserController extends Controller
 {
@@ -39,16 +43,44 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = Owner::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        try{
+            // オーナー新規作成と同時に店舗も作成する
+            DB::transaction(function () use($request) {
+                $owner = Owner::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                ]);
 
-        event(new Registered($user));
+                Shop::create([
+                    'owner_id' => $owner->id,
+                    'name' => '店舗名を入力して下さい',
+                    'information' => '店舗名を入力して下さい',
+                    'filename' => '',
+                    'is_selling' => true,
+                ]);
 
-        Auth::login($user);
+            },2);
 
-        return redirect(RouteServiceProvider::OWNER_HOME);
+            event(new Registered($owner));
+
+            Auth::login($owner);
+
+            return redirect(RouteServiceProvider::OWNER_HOME);
+
+        }catch(Throwable $e) {
+            Log::error($e);
+            throw $e;
+
+            return redirect(RouteServiceProvider::OWNER_HOME);
+        }
+
+        // $owner = Owner::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        // ]);
+
+
     }
 }
