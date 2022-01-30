@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\DB;
 
 class RegisteredUserController extends Controller
 {
+    private $owner;
     /**
      * Display the registration view.
      *
@@ -44,16 +45,18 @@ class RegisteredUserController extends Controller
         ]);
 
         try{
+
             // オーナー新規作成と同時に店舗も作成する
             DB::transaction(function () use($request) {
-                $owner = Owner::create([
+
+                $this->owner = Owner::create([
                     'name' => $request->name,
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                 ]);
 
                 Shop::create([
-                    'owner_id' => $owner->id,
+                    'owner_id' => $this->owner->id,
                     'name' => '店舗名を入力して下さい',
                     'information' => '店舗名を入力して下さい',
                     'filename' => '',
@@ -62,25 +65,15 @@ class RegisteredUserController extends Controller
 
             },2);
 
-            event(new Registered($owner));
+            event(new Registered($this->owner));
 
-            Auth::login($owner);
+            Auth::login($this->owner);
 
             return redirect(RouteServiceProvider::OWNER_HOME);
 
         }catch(Throwable $e) {
             Log::error($e);
             throw $e;
-
-            return redirect(RouteServiceProvider::OWNER_HOME);
         }
-
-        // $owner = Owner::create([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password),
-        // ]);
-
-
     }
 }
