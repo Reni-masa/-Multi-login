@@ -10,6 +10,7 @@ use App\Http\Controllers\Owner\Auth\RegisteredUserController;
 use App\Http\Controllers\Owner\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Owner\OwnerController;
+use App\Http\Controllers\Owner\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,10 @@ Route::resource('owner', OwnerController::class)
 Route::get('/dashboard', function () {
     return view('owner.dashboard');
 })->middleware(['auth:owners'])->name('dashboard');
+
+Route::resource('/shop', ShopController::class)->only([
+    'edit', 'update'
+])->middleware(['auth:owners']);
 
 Route::get('/register', [RegisteredUserController::class, 'create'])
                 ->middleware('guest')

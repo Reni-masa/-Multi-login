@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('owner.owner.index')" :active="request()->routeIs('owner.index')">
                         ユーザー情報
                     </x-nav-link>
+                    <x-nav-link :href="route('owner.shop.edit',Auth::user()->shop->id)" :active="request()->routeIs('owner.edit')">
+                        店舗情報
+                    </x-nav-link>
                 </div>
             </div>
 
