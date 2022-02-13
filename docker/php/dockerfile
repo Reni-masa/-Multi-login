@@ -10,12 +10,19 @@ RUN apt-get update \
   curl \
   vim \
   libonig-dev \
-  libpq-dev
+  libpq-dev \
+  libfreetype6-dev \
+  libjpeg62-turbo-dev \
+  libpng-dev
+
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+# RUN docker-php-ext-install -j $（nproc）gd
 
 # php拡張モジュールインストール
 RUN docker-php-ext-install \
   pdo \
-  pdo_pgsql
+  pdo_pgsql \
+  gd
 
 # nodejsインストール
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
