@@ -20,21 +20,24 @@ class ShopController extends Controller
 
     public function update(ShopPostRequest $request, $id)
     {
+        $shop = Auth::user()->shop;
+
         // リクエストファイル取得
         $imageFile = $request->filename;
 
         if( !is_null($imageFile)) {
-
             // 画像保存
             $fileName = ImageService::imageFileUpload($imageFile,'shops');
 
             // 画像パスを保存
             $filePath = '/storage/shops/' . $fileName;
-            $shop = Auth::user()->shop;
             $shop->filename = $filePath;
-            $shop->save();
         }
+        $shop->name = $request->name;
+        $shop->information = $request->information;
+        $shop->is_selling = $request->is_selling === null ? "0" : "1";
 
+        $shop->save();
         return redirect()->route('owner.dashboard');
     }
 }
