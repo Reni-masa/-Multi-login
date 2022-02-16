@@ -10,6 +10,8 @@ class SecondaryCategory extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+    
     public function primaryCategory()
     {
         return $this->belongsTo(PrimaryCategory::class);

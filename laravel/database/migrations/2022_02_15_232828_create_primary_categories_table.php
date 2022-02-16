@@ -17,7 +17,6 @@ class CreatePrimaryCategoriesTable extends Migration
             $table->id();
             $table->string('name')->comment('カテゴリー名');
             $table->integer('sort_order')->comment('並び順');
-            $table->timestamps();
         });
     }
 

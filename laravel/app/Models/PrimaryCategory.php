@@ -10,6 +10,8 @@ class PrimaryCategory extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public function secondaryCategories()
     {
         return $this->hasMany(SecondaryCategory::class);

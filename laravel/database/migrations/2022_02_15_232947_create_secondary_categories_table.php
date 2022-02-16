@@ -18,7 +18,6 @@ class CreateSecondaryCategoriesTable extends Migration
             $table->string('name')->comment('カテゴリー名');
             $table->integer('sort_order')->comment('並び順');
             $table->foreignId('primary_categories_id')->constrained();
-            $table->timestamps();
         });
     }
 
