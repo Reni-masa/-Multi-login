@@ -7,6 +7,7 @@ use Database\Seeders\OwnerSeeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\PrimaryCategorySeeder;
 use Database\Seeders\SecondaryCategorySeeder;
+use Database\Seeders\ProductSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder
             ShopSeeder::class,
             PrimaryCategorySeeder::class,
             SecondaryCategorySeeder::class,
+            ProductSeeder::class,
         ]);
     }
 }
