@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Owner;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -14,7 +17,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Owner::findOrFail(Auth::id())->shop->products;
+
+        return view('owner.product.index',compact('products'));
     }
 
     /**

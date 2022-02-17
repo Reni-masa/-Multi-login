@@ -18,11 +18,14 @@
                     <x-nav-link :href="route('owner.dashboard')" :active="request()->routeIs('owner.dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('owner.owner.index')" :active="request()->routeIs('owner.index')">
+                    <x-nav-link :href="route('owner.owner.index')" :active="request()->routeIs('owner.owner.index')">
                         ユーザー情報
                     </x-nav-link>
-                    <x-nav-link :href="route('owner.shop.edit',Auth::user()->shop->id)" :active="request()->routeIs('owner.edit')">
+                    <x-nav-link :href="route('owner.shop.edit',Auth::user()->shop->id)" :active="request()->routeIs('owner.shop.edit')">
                         店舗情報
+                    </x-nav-link>
+                    <x-nav-link :href="route('owner.product.index')" :active="request()->routeIs('owner.product.index')">
+                        商品情報
                     </x-nav-link>
                 </div>
             </div>
