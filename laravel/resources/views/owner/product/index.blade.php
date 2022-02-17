@@ -9,7 +9,6 @@
         <div class="container px-5 py-24 mx-auto">
             <div class="lg:w-1/2 md:w-2/3 mx-auto">
                 <div class="-m-2">
-
                     @forelse ($products as $product)
                         <div>
                             <a href="{{ route('owner.product.edit', $product->id) }}" style="display: block;">
@@ -29,6 +28,8 @@
 
                 </div>
             </div>
+
+            {{ $products->links() }}
         </div>
     </section>
 

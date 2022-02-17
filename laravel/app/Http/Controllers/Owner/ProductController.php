@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Owner::findOrFail(Auth::id())->shop->products;
+        $products = Owner::findOrFail(Auth::id())->shop->products()->paginate(2);
 
         return view('owner.product.index',compact('products'));
     }
