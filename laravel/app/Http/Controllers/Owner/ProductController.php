@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Owner;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Owner;
+use App\Models\PrimaryCategory;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
+use App\Models\Shop;
 
 class ProductController extends Controller
 {
@@ -29,7 +31,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $shop = Shop::where('owner_id',Auth::id())->get();
+        $categories = PrimaryCategory::with('secondaryCategories')->get();
+
+        return view('owner.product.create', compact('shop', 'categories'));
     }
 
     /**

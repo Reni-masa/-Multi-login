@@ -3,6 +3,9 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('商品一覧') }}
         </h2>
+        <div>
+            <a href="{{route('owner.product.create')}}">出品</a>
+        </div>
     </x-slot>
 
     <section class="text-gray-600 body-font relative">

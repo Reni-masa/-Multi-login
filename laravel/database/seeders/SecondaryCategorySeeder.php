@@ -18,42 +18,42 @@ class SecondaryCategorySeeder extends Seeder
             [
                 'name' => 'ボトム',
                 'sort_order' => 1,
-                'primary_categories_id' => 1,
+                'primary_category_id' => 1,
             ],
             [
                 'name' => 'アウター',
                 'sort_order' => 2,
-                'primaty_categories_id' => 1,
+                'primary_category_id' => 1,
             ],
             [
                 'name' => 'Tシャツ',
                 'sort_order' => 3,
-                'primaty_categories_id' => 1,
+                'primary_category_id' => 1,
             ],
             [
                 'name' => '漫画',
                 'sort_order' => 1,
-                'primaty_categories_id' => 2,
+                'primary_category_id' => 2,
             ],
             [
                 'name' => 'ビジネス書',
                 'sort_order' => 2,
-                'primaty_categories_id' => 2,
+                'primary_category_id' => 2,
             ],
             [
                 'name' => 'モニター',
                 'sort_order' => 1,
-                'primaty_categories_id' => 3,
+                'primary_category_id' => 3,
             ],
             [
                 'name' => 'デスク',
                 'sort_order' => 2,
-                'primaty_categories_id' => 3,
+                'primary_category_id' => 3,
             ],
             [
                 'name' => 'キーボード',
                 'sort_order' => 3,
-                'primaty_categories_id' => 3,
+                'primary_category_id' => 3,
             ],
 
         ]);
