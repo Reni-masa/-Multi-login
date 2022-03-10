@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Test\IndexController as TestIndexConroller;
+use App\Http\Middleware\TestMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +22,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('user.dashboard');
 })->middleware(['auth:users'])->name('dashboard');
+
+// 検証用
+Route::get('/test', [TestIndexConroller::class, 'index'])->middleware([TestMiddleware::class])->name('test.index');
 
 require __DIR__.'/auth.php';
